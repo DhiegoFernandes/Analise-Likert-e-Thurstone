@@ -1,0 +1,46 @@
+---
+title: "Opinião dos estudantes sobre a importância do conhecimento teórico vs conhecimento prático no ensino superior"
+author: "Dhiego Fernandes da Silva | Moises Alves Silva | Guilherme Cunha Alves"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+---
+## Introdução
+
+O ensino superior pode equilibrar teoria e prática de diferentes formas, dependendo das expectativas e necessidades dos alunos. Este estudo tem como objetivo compreender a opinião dos estudantes sobre a **importância do conhecimento teórico** versus o **aprendizado prático** no ensino superior.
+
+O tema é relevante para avaliar se a universidade deve priorizar a formação conceitual ou o desenvolvimento de habilidades aplicadas, contribuindo para ajustes no currículo e estratégias pedagógicas.
+
+A pesquisa busca responder a seguinte pergunta:  
+
+**Problema de pesquisa:** Como os estudantes percebem a importância do conhecimento teórico em relação ao conhecimento prático na formação universitária?
+
+**Hipóteses:**
+1. Os estudantes valorizam igualmente teoria e prática.  
+2. A escala de Likert e a escala de Thurstone produzem resultados similares, mas com diferentes níveis de detalhamento.
+## Metodologia
+
+### Construção dos instrumentos
+Foram elaborados 5 itens relacionados à importância da teoria e da prática no ensino superior. Cada item foi aplicado em **duas escalas**:
+
+- **Likert:** escala de 1 a 5 (Discordo totalmente → Concordo totalmente)  
+- **Thurstone:** escala de Concordo/Discordo, com pesos atribuídos previamente por 3 juízes (mediana dos valores de 1 a 11)
+
+### Amostra
+A pesquisa foi aplicada a estudantes de cursos de graduação. O link do Google Forms foi compartilhado com voluntários.  
+
+### Coleta de dados
+- Likert: respostas de 1 a 5 para cada item  
+- Thurstone: respostas Concordo/Discordo, convertidas em escores segundo os pesos definidos pelos juízes
+
+### Procedimentos de análise
+Os dados foram importados para o RStudio e tratados da seguinte forma:
+1. Likert → cálculo da média de cada aluno  
+2. Thurstone → cálculo da média dos pesos dos itens com que o aluno concordou  
+3. Estatísticas descritivas → média, mediana, desvio padrão  
+4. Visualizações → histogramas e boxplots para comparar as escalas
+
+
