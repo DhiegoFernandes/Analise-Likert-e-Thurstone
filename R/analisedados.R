@@ -1,4 +1,4 @@
-req <- c("readr","dplyr","ggplot2","tidyr","psych","gridExtra","stringr")
+req <- c("here","readr","dplyr","ggplot2","tidyr","psych","gridExtra","stringr")
 inst <- req[!req %in% installed.packages()[,1]]
 if(length(inst)) install.packages(inst)
 lapply(req, library, character.only = TRUE)
@@ -26,14 +26,14 @@ cat("Colunas respostas:\n"); print(names(dados_respostas_filtrados))
 #cat("Dim pesos:", dim(dados_pesos), "\n")
 #cat("Colunas pesos:\n"); print(names(dados_pesos))
 
-# 4) Seleção das colunas (F:J Likert = 6:10; K:O Thurstone = 11:15)
+# Seleção das colunas (F:J Likert = 6:10; K:O Thurstone = 11:15)
 stopifnot(ncol(dados_respostas_filtrados) >= 15)
 colunas_likert    <- dados_respostas_filtrados[, 6:10]
 colunas_thurstone <- dados_respostas_filtrados[, 11:15]
 names(colunas_likert)    <- paste0("Likert_", 1:5)
 names(colunas_thurstone) <- paste0("Thurstone_", 1:5)
 
-# 5) Remover linhas totalmente vazias nas áreas F:O (comuns em CSV exportado)
+# Remover linhas totalmente vazias nas áreas F:O (comuns em CSV exportado)
 zona_itens <- dados_respostas_filtrados[, 6:15]
 linhas_validas <- apply(zona_itens, 1, function(r) any(!(is.na(r) | r == "")))
 dados_respostas_filtrados <- dados_respostas_filtrados[linhas_validas, ]
@@ -42,7 +42,7 @@ colunas_thurstone <- dados_respostas_filtrados[, 11:15]
 names(colunas_likert)    <- paste0("Likert_", 1:5)
 names(colunas_thurstone) <- paste0("Thurstone_", 1:5)
 
-# 6) Conversão: Likert para numérico (robusto)
+# Conversão: Likert para numérico (robusto)
 to_num_likert <- function(x) {
   x_chr <- trimws(tolower(as.character(x)))
   # tenta conversão direta (ex.: "1","2")
@@ -74,8 +74,17 @@ if(length(itens_invertidos)) {
   colunas_likert_num[itens_invertidos] <- lapply(colunas_likert_num[itens_invertidos], function(x) 6 - x)
 }
 
-# 7) Escore Likert + Alfa
+# Escore Likert
 dados_respostas_filtrados$escore_likert <- rowSums(colunas_likert_num, na.rm = TRUE)
+
+itens_com_var <- colunas_likert_num[, sapply(colunas_likert_num, function(v) var(v, na.rm = TRUE) > 0), drop = FALSE]
+if(ncol(itens_com_var) >= 2) {
+  alpha_likert <- psych::alpha(itens_com_var, warnings = FALSE)
+  cat("Alfa de Cronbach (Likert):", round(alpha_likert$total$raw_alpha, 3), "\n")
+} else {
+  alpha_likert <- NULL
+  cat("Sem variabilidade suficiente nos itens Likert para calcular alfa.\n")
+}
 
 # Estatísticas Likert
 likert_stats <- data.frame(
