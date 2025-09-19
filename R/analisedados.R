@@ -121,7 +121,7 @@ mat_bin <- as.matrix(colunas_thurstone_bin)
 soma_pesos <- mat_bin %*% matrix(pesos_thurstone, ncol = 1)
 qtd_conc   <- rowSums(colunas_thurstone_bin, na.rm = TRUE)
 
-# Calcula escore thurstone e coloca na tabela respostasfiltradas (vlr 11-Valoriza teoria e 1-Valoriza pratica)
+# Calcula escore thurstone e coloca na tabela respostasfiltradas (11-Valoriza teoria e 1-Valoriza pratica)
 dados_respostas_filtrados$escore_thurstone <- ifelse(qtd_conc > 0, soma_pesos[,1] / qtd_conc, NA_real_)
 
 # Estatísticas Thurstone
@@ -140,68 +140,77 @@ thurstone_stats <- data.frame(
 cat("\nResumo Likert:\n"); print(likert_stats)
 cat("\nResumo Thurstone:\n"); print(thurstone_stats)
 
-# # 9) Gráficos
-# dir.create("plots", showWarnings = FALSE)
-# 
-# g_hist_likert <- ggplot(dados_respostas_filtrados, aes(x = escore_likert)) +
-#   geom_histogram(bins = 10, fill = "skyblue", color = "black", alpha = 0.8) +
-#   labs(title = "Distribuição de Escores - Likert", x = "Escore total", y = "Frequência") +
-#   theme_minimal()
-# 
-# g_box_likert <- ggplot(dados_respostas_filtrados, aes(y = escore_likert)) +
-#   geom_boxplot(fill = "skyblue") +
-#   labs(title = "Boxplot - Likert", y = "Escore total") +
-#   theme_minimal()
-# 
-# g_hist_thurst <- ggplot(dados_respostas_filtrados, aes(x = escore_thurstone)) +
-#   geom_histogram(bins = 10, fill = "lightgreen", color = "black", alpha = 0.8) +
-#   labs(title = "Distribuição de Escores - Thurstone", x = "Escore", y = "Frequência") +
-#   theme_minimal()
-# 
-# g_box_thurst <- ggplot(dados_respostas_filtrados, aes(y = escore_thurstone)) +
-#   geom_boxplot(fill = "lightgreen") +
-#   labs(title = "Boxplot - Thurstone", y = "Escore") +
-#   theme_minimal()
-# 
-# # Comparação e correlação
-# dados_comp <- dados_respostas_filtrados %>%
-#   select(escore_likert, escore_thurstone) %>%
-#   pivot_longer(cols = everything(), names_to = "Escala", values_to = "Escore")
-# 
-# g_box_comp <- ggplot(dados_comp, aes(x = Escala, y = Escore, fill = Escala)) +
-#   geom_boxplot() +
-#   scale_fill_manual(values = c("escore_likert" = "skyblue", "escore_thurstone" = "lightgreen")) +
-#   labs(title = "Comparação de Escores", x = "", y = "Escore") +
-#   theme_minimal()
-# 
-# cor_escalas <- suppressWarnings(cor(dados_respostas_filtrados$escore_likert,
-#                                     dados_respostas_filtrados$escore_thurstone,
-#                                     use = "complete.obs", method = "pearson"))
-# cat("\nCorrelação Likert x Thurstone (pearson):", round(cor_escalas, 3), "\n")
-# 
-# g_scatter <- ggplot(dados_respostas_filtrados, aes(escore_likert, escore_thurstone)) +
-#   geom_point(alpha = 0.7) +
-#   geom_smooth(method = "lm", se = TRUE, color = "red") +
-#   labs(title = paste0("Correlação Likert x Thurstone (r = ", round(cor_escalas, 3), ")"),
-#        x = "Escore Likert", y = "Escore Thurstone") +
-#   theme_minimal()
-# 
-# # Salvar gráficos
-# ggsave("plots/hist_likert.png", g_hist_likert, width = 6, height = 4, dpi = 150)
-# ggsave("plots/box_likert.png", g_box_likert, width = 4, height = 4, dpi = 150)
-# ggsave("plots/hist_thurstone.png", g_hist_thurst, width = 6, height = 4, dpi = 150)
-# ggsave("plots/box_thurstone.png", g_box_thurst, width = 4, height = 4, dpi = 150)
-# ggsave("plots/box_comparativo.png", g_box_comp, width = 5, height = 4, dpi = 150)
-# ggsave("plots/scatter_correlacao.png", g_scatter, width = 5, height = 4, dpi = 150)
-# 
-# # 10) Exportar escores finais para uso no R Markdown
-# saida <- dados_respostas_filtrados %>%
-#   mutate(across(everything(), as.character)) %>%
-#   bind_cols(
-#     colunas_likert_num %>% mutate(across(everything(), as.character)),
-#     colunas_thurstone %>% mutate(across(everything(), as.character))
-#   ) %>%
-#   select(escore_likert, escore_thurstone, everything())
-# 
-# write_csv(saida, "escores_finais.csv")
-# cat("\nArquivo 'escores_finais.csv' salvo e gráficos na pasta 'plots/'.\n")
+# Gráficos
+dir.create("plots", showWarnings = FALSE)
+
+# Distribuicao likert
+g_hist_likert <- ggplot(dados_respostas_filtrados, aes(x = escore_likert)) +
+  geom_histogram(bins = 10, fill = "skyblue", color = "black", alpha = 0.8) +
+  labs(title = "Distribuição de Escores - Likert", x = "Escore total", y = "Frequência") +
+  theme_minimal()
+
+# Boxplot likert exibe mediana, valores extremos (max 25 (pratica), min 5(teoria))
+g_box_likert <- ggplot(dados_respostas_filtrados, aes(y = escore_likert)) +
+  geom_boxplot(fill = "skyblue") +
+  labs(title = "Boxplot - Likert", y = "Escore total") +
+  theme_minimal()
+
+# Distribuicao thurstone 
+g_hist_thurst <- ggplot(dados_respostas_filtrados, aes(x = escore_thurstone)) +
+  geom_histogram(bins = 10, fill = "lightgreen", color = "black", alpha = 0.8) +
+  labs(title = "Distribuição de Escores - Thurstone", x = "Escore", y = "Frequência") +
+  theme_minimal()
+
+# Boxplot Thurstone (max 10 (teoria), min 2(pratica))
+g_box_thurst <- ggplot(dados_respostas_filtrados, aes(y = escore_thurstone)) +
+  geom_boxplot(fill = "lightgreen") +
+  labs(title = "Boxplot - Thurstone", y = "Escore") +
+  theme_minimal()
+
+
+
+# Comparação e correlação
+dados_comp <- dados_respostas_filtrados %>%
+  select(escore_likert, escore_thurstone) %>%
+  pivot_longer(cols = everything(), names_to = "Escala", values_to = "Escore")
+
+# Boxplot comparativo entre likert e thurstone
+g_box_comp <- ggplot(dados_comp, aes(x = Escala, y = Escore, fill = Escala)) +
+  geom_boxplot() +
+  scale_fill_manual(values = c("escore_likert" = "skyblue", "escore_thurstone" = "lightgreen")) +
+  labs(title = "Comparação de Escores", x = "", y = "Escore") +
+  theme_minimal()
+
+# correlacao entre likert e thurstone
+cor_escalas <- suppressWarnings(cor(dados_respostas_filtrados$escore_likert,
+                                    dados_respostas_filtrados$escore_thurstone,
+                                    use = "complete.obs"))
+cat("\nCorrelação Likert x Thurstone:", round(cor_escalas, 3), "\n")
+
+# Grafico de dispersao com linha de tendencia
+g_scatter <- ggplot(dados_respostas_filtrados, aes(escore_likert, escore_thurstone)) +
+  geom_point(alpha = 0.7) +
+  geom_smooth(method = "lm", se = TRUE, color = "red") +
+  labs(title = paste0("Correlação Likert x Thurstone (r = ", round(cor_escalas, 3), ")"),
+       x = "Escore Likert", y = "Escore Thurstone") +
+  theme_minimal()
+
+# Salva gráficos
+ggsave("plots/distribuicao_likert.png", g_hist_likert, width = 6, height = 4, dpi = 150)
+ggsave("plots/box_likert.png", g_box_likert, width = 4, height = 4, dpi = 150)
+ggsave("plots/distribuicao_thurstone.png", g_hist_thurst, width = 6, height = 4, dpi = 150)
+ggsave("plots/box_thurstone.png", g_box_thurst, width = 4, height = 4, dpi = 150)
+ggsave("plots/box_comparativo.png", g_box_comp, width = 5, height = 4, dpi = 150)
+ggsave("plots/scatter_correlacao.png", g_scatter, width = 5, height = 4, dpi = 150)
+
+# Exportar escores finais para uso no R Markdown
+saida <- dados_respostas_filtrados %>%
+  mutate(across(everything(), as.character)) %>%
+  bind_cols(
+    colunas_likert_num %>% mutate(across(everything(), as.character)),
+    colunas_thurstone %>% mutate(across(everything(), as.character))
+  ) %>%
+  select(escore_likert, escore_thurstone, everything())
+
+write_csv(saida, "escores_finais.csv")
+cat("\nArquivo 'escores_finais.csv' salvo e gráficos na pasta 'plots/'.\n")
