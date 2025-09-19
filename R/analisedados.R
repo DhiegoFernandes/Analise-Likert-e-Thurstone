@@ -77,14 +77,14 @@ if(length(itens_invertidos)) {
 # Escore Likert
 dados_respostas_filtrados$escore_likert <- rowSums(colunas_likert_num, na.rm = TRUE)
 
-itens_com_var <- colunas_likert_num[, sapply(colunas_likert_num, function(v) var(v, na.rm = TRUE) > 0), drop = FALSE]
-if(ncol(itens_com_var) >= 2) {
-  alpha_likert <- psych::alpha(itens_com_var, warnings = FALSE)
-  cat("Alfa de Cronbach (Likert):", round(alpha_likert$total$raw_alpha, 3), "\n")
-} else {
-  alpha_likert <- NULL
-  cat("Sem variabilidade suficiente nos itens Likert para calcular alfa.\n")
-}
+# itens_com_var <- colunas_likert_num[, sapply(colunas_likert_num, function(v) var(v, na.rm = TRUE) > 0), drop = FALSE]
+# if(ncol(itens_com_var) >= 2) {
+#   alpha_likert <- psych::alpha(itens_com_var, warnings = FALSE)
+#   cat("Alfa de Cronbach (Likert):", round(alpha_likert$total$raw_alpha, 3), "\n")
+# } else {
+#   alpha_likert <- NULL
+#   cat("Sem variabilidade suficiente nos itens Likert para calcular alfa.\n")
+# }
 
 # Estatísticas Likert
 likert_stats <- data.frame(
