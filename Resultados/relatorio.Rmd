@@ -1,46 +1,109 @@
 ---
 title: "Opinião dos estudantes sobre a importância do conhecimento teórico vs conhecimento prático no ensino superior"
 author: "Dhiego Fernandes da Silva | Moises Alves Silva | Guilherme Cunha Alves"
-date: "`r Sys.Date()`"
 output:
   html_document:
     toc: true
-    toc_depth: 3
+    toc_depth: 2
+    toc_float: true
     number_sections: true
+  pdf_document:
+    toc: true
+    number_sections: true
+lang: pt-BR
 ---
+
+```{r processamento-dados, include=FALSE}
+library(here)
+source(here("R", "analisedados.R"), encoding = "UTF-8")
+```
 ## Introdução
 
-O ensino superior pode equilibrar teoria e prática de diferentes formas, dependendo das expectativas e necessidades dos alunos. Este estudo tem como objetivo compreender a opinião dos estudantes sobre a **importância do conhecimento teórico** versus o **aprendizado prático** no ensino superior.
+  O debate sobre o equilíbrio entre conhecimento teórico e conhecimento prático no ensino superior é cada vez mais relevante diante das rápidas mudanças no mercado de trabalho e das exigências por profissionais com capacidades e entendimentos amplos. Enquanto a teoria fornece as bases conceituais necessárias para compreender fenômenos e desenvolver pensamento crítico, a prática oferece a vivência de situações reais, preparando os estudantes para os desafios profissionais imediatos.
 
-O tema é relevante para avaliar se a universidade deve priorizar a formação conceitual ou o desenvolvimento de habilidades aplicadas, contribuindo para ajustes no currículo e estratégias pedagógicas.
+  Neste contexto, essa pesquisa procura compreender a **“Opinião dos estudantes sobre a importância do conhecimento teórico vs. conhecimento prático no ensino superior”** e a relação entre esses dois tipos de conhecimento em sua formação acadêmica. Fazendo assim comparações com as metodologias de mensuração de atitudes, **Escala de Likert e a Escala de Thurstone**.
 
-A pesquisa busca responder a seguinte pergunta:  
+  A relevância deste estudo reside em fornecer evidências sobre a percepção dos estudantes, como a importância do conhecimento teórico em relação ao conhecimento prático é percebido por eles na formação universitária, permitindo refletir sobre como universidades podem alinhar seus currículos às demandas, considerando entre fundamentos teóricos e experiências práticas.
 
-**Problema de pesquisa:** Como os estudantes percebem a importância do conhecimento teórico em relação ao conhecimento prático na formação universitária?
-
-**Hipóteses:**
-1. Os estudantes valorizam igualmente teoria e prática.  
-2. A escala de Likert e a escala de Thurstone produzem resultados similares, mas com diferentes níveis de detalhamento.
 ## Metodologia
 
-### Construção dos instrumentos
-Foram elaborados 5 itens relacionados à importância da teoria e da prática no ensino superior. Cada item foi aplicado em **duas escalas**:
+ASDA DASD SAFAF A
 
-- **Likert:** escala de 1 a 5 (Discordo totalmente → Concordo totalmente)  
-- **Thurstone:** escala de Concordo/Discordo, com pesos atribuídos previamente por 3 juízes (mediana dos valores de 1 a 11)
+## Resultados
 
-### Amostra
-A pesquisa foi aplicada a estudantes de cursos de graduação. O link do Google Forms foi compartilhado com voluntários.  
+Esta seção apresenta os resultados obtidos a partir da aplicação das Escalas de Likert e Thurstone, evidenciando a opinião dos participantes sobre a importância do conhecimento teórico versus prático no ensino superior.
 
-### Coleta de dados
-- Likert: respostas de 1 a 5 para cada item  
-- Thurstone: respostas Concordo/Discordo, convertidas em escores segundo os pesos definidos pelos juízes
+### **Estatísticas descritivas**
 
-### Procedimentos de análise
-Os dados foram importados para o RStudio e tratados da seguinte forma:
-1. Likert → cálculo da média de cada aluno  
-2. Thurstone → cálculo da média dos pesos dos itens com que o aluno concordou  
-3. Estatísticas descritivas → média, mediana, desvio padrão  
-4. Visualizações → histogramas e boxplots para comparar as escalas
+A Tabela 1 apresenta as principais medidas de tendência central e dispersão para os escores das duas escalas aplicadas.
 
+**Estatísticas principais da escala Likert:**
+```{r tabela-likert-thurstone, echo=FALSE}
+library(knitr)
+kable(likert_stats, caption = "Tabela 1 – Estatísticas descritivas da Escala de Likert")
+```
 
+**Estatísticas principais da escala Thurstone:**
+```{r tabela-thurstone, echo=FALSE}
+library(knitr)
+kable(thurstone_stats, caption = "Tabela 2 – Estatísticas descritivas da Escala de Thurstone")
+```
+
+### **Distribuição dos escores**
+
+Os gráficos a seguir ilustram a distribuição dos escores obtidos em cada escala.
+
+```{r grafico-likert, echo=FALSE, fig.cap="Figura 1 – Distribuição dos escores na Escala de Likert."}
+knitr::include_graphics(here("plots", "distribuicao_likert.png"))
+```
+Figura 1 – Distribuição dos escores na Escala de Likert.
+Observa-se que ___ (descrever padrão visual, como concentração em valores altos/baixos).
+
+[CHUNK R – grafico-thurstone]
+
+knitr::include_graphics("plots/distribuicao_thurstone.png")
+
+Figura 2 – Distribuição dos escores na Escala de Thurstone.
+Nota-se que ___.
+
+Boxplots
+
+Os boxplots a seguir evidenciam a dispersão dos dados em cada escala.
+
+[CHUNK R – box-likert]
+
+knitr::include_graphics("plots/box_likert.png")
+
+Figura 3 – Boxplot da Escala de Likert.
+
+[CHUNK R – box-thurstone]
+
+knitr::include_graphics("plots/box_thurstone.png")
+
+Figura 4 – Boxplot da Escala de Thurstone.
+
+Comparação entre escalas
+
+A Figura 5 apresenta um boxplot comparativo dos escores obtidos nas duas escalas, permitindo visualizar possíveis diferenças de dispersão e mediana.
+
+[CHUNK R – box-comparativo]
+
+knitr::include_graphics("plots/box_comparativo.png")
+
+Figura 5 – Comparação de escores entre as Escalas de Likert e Thurstone.
+Verifica-se que ___.
+
+Relação entre os escores
+
+A relação entre os escores das escalas foi avaliada por meio de gráfico de dispersão (Figura 6), que indica a força da associação entre as duas medidas.
+
+[CHUNK R – scatter-correlacao]
+
+knitr::include_graphics("plots/scatter_correlacao.png")
+
+Figura 6 – Dispersão dos escores Likert vs. Thurstone.
+O coeficiente de correlação obtido foi de r = ___, sugerindo ___ (ex.: correlação positiva fraca/moderada/forte).
+
+Interpretação geral
+
+Os resultados indicam que ___ (insira aqui a interpretação principal, como maior valorização da prática, equilíbrio entre teoria e prática, etc.).
