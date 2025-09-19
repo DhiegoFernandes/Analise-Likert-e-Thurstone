@@ -100,55 +100,46 @@ likert_stats <- data.frame(
 )
 
 # -------------------------------------------------------------------------------------------------
-# # 8) Thurstone: binarizar respostas e aplicar pesos
-# to_bin_thurstone <- function(x){
-#   x_chr <- trimws(tolower(as.character(x)))
-#   dplyr::case_when(
-#     x_chr %in% c("concordo","concordo totalmente","concordo parcialmente","sim","verdadeiro","true","1") ~ 1,
-#     x_chr %in% c("discordo","discordo totalmente","discordo parcialmente","nao","não","falso","false","0") ~ 0,
-#     suppressWarnings(!is.na(as.numeric(x_chr)) & as.numeric(x_chr) > 0) ~ 1, # numérico > 0
-#     suppressWarnings(!is.na(as.numeric(x_chr)) & as.numeric(x_chr) == 0) ~ 0,
-#     TRUE ~ NA_real_
-#   )
-# }
-# colunas_thurstone_bin <- as.data.frame(lapply(colunas_thurstone, to_bin_thurstone))
-# names(colunas_thurstone_bin) <- names(colunas_thurstone)
-# 
-# # Pesos: detectar coluna de "Mediana (peso final)" no CSV de pesos
-# nome_col_peso <- grep("peso|mediana", names(dados_pesos), ignore.case = TRUE, value = TRUE)[1]
-# stopifnot(!is.na(nome_col_peso))
-# 
-# # converter pesos para numérico (troca vírgula por ponto, se houver)
-# pesos_thurstone <- dados_pesos[[nome_col_peso]]
-# if(is.character(pesos_thurstone)) pesos_thurstone <- as.numeric(gsub(",", ".", pesos_thurstone))
-# pesos_thurstone <- as.numeric(pesos_thurstone)
-# 
-# # manter apenas a quantidade de itens da sua aplicação (5 itens K:O)
-# pesos_thurstone <- pesos_thurstone[1:ncol(colunas_thurstone_bin)]
-# stopifnot(length(pesos_thurstone) == ncol(colunas_thurstone_bin))
-# 
-# # escore Thurstone = média dos pesos das afirmativas com concordo (1)
-# mat_bin <- as.matrix(colunas_thurstone_bin)
-# soma_pesos <- mat_bin %*% matrix(pesos_thurstone, ncol = 1)
-# qtd_conc   <- rowSums(colunas_thurstone_bin, na.rm = TRUE)
-# dados_respostas_filtrados$escore_thurstone <- ifelse(qtd_conc > 0, soma_pesos[,1] / qtd_conc, NA_real_)
-# 
-# # Estatísticas Thurstone
-# thurstone_stats <- data.frame(
-#   Estatistica = c("Média","Mediana","Desvio Padrão","IQR","Min","Max"),
-#   Valor = c(
-#     mean(dados_respostas_filtrados$escore_thurstone, na.rm = TRUE),
-#     median(dados_respostas_filtrados$escore_thurstone, na.rm = TRUE),
-#     sd(dados_respostas_filtrados$escore_thurstone, na.rm = TRUE),
-#     IQR(dados_respostas_filtrados$escore_thurstone, na.rm = TRUE),
-#     min(dados_respostas_filtrados$escore_thurstone, na.rm = TRUE),
-#     max(dados_respostas_filtrados$escore_thurstone, na.rm = TRUE)
-#   )
-# )
-# 
-# cat("\nResumo Likert:\n"); print(likert_stats)
-# cat("\nResumo Thurstone:\n"); print(thurstone_stats)
-# 
+# 8) Thurstone: binariza pesos (0 discordo e 1 concordo)
+to_bin_thurstone <- function(x){
+  x_chr <- trimws(tolower(as.character(x)))
+  dplyr::case_when(
+    x_chr == "concordo"  ~ 1,
+    x_chr == "discordo" ~ 0,
+    TRUE ~ NA_real_
+  )
+}
+colunas_thurstone_bin <- as.data.frame(lapply(colunas_thurstone, to_bin_thurstone))
+names(colunas_thurstone_bin) <- names(colunas_thurstone)
+
+# Acessa os pesos e converte para numero
+pesos_thurstone <- as.numeric(dados_pesos$`Mediana (peso final)`)
+pesos_thurstone <- pesos_thurstone[1:5] 
+
+# escore Thurstone = média dos pesos das afirmativas com concordo (1)
+mat_bin <- as.matrix(colunas_thurstone_bin)
+soma_pesos <- mat_bin %*% matrix(pesos_thurstone, ncol = 1)
+qtd_conc   <- rowSums(colunas_thurstone_bin, na.rm = TRUE)
+
+# Calcula escore thurstone e coloca na tabela respostasfiltradas (vlr 11-Valoriza teoria e 1-Valoriza pratica)
+dados_respostas_filtrados$escore_thurstone <- ifelse(qtd_conc > 0, soma_pesos[,1] / qtd_conc, NA_real_)
+
+# Estatísticas Thurstone
+thurstone_stats <- data.frame(
+  Estatistica = c("Média","Mediana","Desvio Padrão","IQR","Min","Max"),
+  Valor = c(
+    mean(dados_respostas_filtrados$escore_thurstone, na.rm = TRUE),
+    median(dados_respostas_filtrados$escore_thurstone, na.rm = TRUE),
+    sd(dados_respostas_filtrados$escore_thurstone, na.rm = TRUE),
+    IQR(dados_respostas_filtrados$escore_thurstone, na.rm = TRUE),
+    min(dados_respostas_filtrados$escore_thurstone, na.rm = TRUE),
+    max(dados_respostas_filtrados$escore_thurstone, na.rm = TRUE)
+  )
+)
+
+cat("\nResumo Likert:\n"); print(likert_stats)
+cat("\nResumo Thurstone:\n"); print(thurstone_stats)
+
 # # 9) Gráficos
 # dir.create("plots", showWarnings = FALSE)
 # 
