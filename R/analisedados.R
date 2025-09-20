@@ -169,7 +169,6 @@ g_box_thurst <- ggplot(dados_respostas_filtrados, aes(y = escore_thurstone)) +
   theme_minimal()
 
 
-
 # Comparação e correlação
 dados_comp <- dados_respostas_filtrados %>%
   select(escore_likert, escore_thurstone) %>%
@@ -182,19 +181,19 @@ g_box_comp <- ggplot(dados_comp, aes(x = Escala, y = Escore, fill = Escala)) +
   labs(title = "Comparação de Escores", x = "", y = "Escore") +
   theme_minimal()
 
-# correlacao entre likert e thurstone
-cor_escalas <- suppressWarnings(cor(dados_respostas_filtrados$escore_likert,
-                                    dados_respostas_filtrados$escore_thurstone,
-                                    use = "complete.obs"))
-cat("\nCorrelação Likert x Thurstone:", round(cor_escalas, 3), "\n")
+# Pivot para formato longo usando os escores originais
+dados_comp_orig <- dados_respostas_filtrados %>%
+  select(escore_likert, escore_thurstone) %>%
+  pivot_longer(cols = everything(), names_to = "Escala", values_to = "Escore")
 
-# Grafico de dispersao com linha de tendencia
-g_scatter <- ggplot(dados_respostas_filtrados, aes(escore_likert, escore_thurstone)) +
-  geom_point(alpha = 0.7) +
-  geom_smooth(method = "lm", se = TRUE, color = "red") +
-  labs(title = paste0("Correlação Likert x Thurstone (r = ", round(cor_escalas, 3), ")"),
-       x = "Escore Likert", y = "Escore Thurstone") +
+# Histogramas facetados para comparar distribuições originais
+g_hist_facet <- ggplot(dados_comp_orig, aes(x = Escore, fill = Escala)) +
+  geom_histogram(bins = 10, color = "black", alpha = 0.6) +
+  facet_wrap(~Escala, scales = "free") +
+  scale_fill_manual(values = c("escore_likert" = "skyblue", "escore_thurstone" = "lightgreen")) +
+  labs(title = "Distribuição de Escores", x = "Escore", y = "Frequência") +
   theme_minimal()
+
 
 # Salva gráficos
 ggsave("plots/distribuicao_likert.png", g_hist_likert, width = 6, height = 4, dpi = 150)
@@ -202,7 +201,7 @@ ggsave("plots/box_likert.png", g_box_likert, width = 4, height = 4, dpi = 150)
 ggsave("plots/distribuicao_thurstone.png", g_hist_thurst, width = 6, height = 4, dpi = 150)
 ggsave("plots/box_thurstone.png", g_box_thurst, width = 4, height = 4, dpi = 150)
 ggsave("plots/box_comparativo.png", g_box_comp, width = 5, height = 4, dpi = 150)
-ggsave("plots/scatter_correlacao.png", g_scatter, width = 5, height = 4, dpi = 150)
+ggsave("plots/histogramas_facetados.png", g_hist_facet, width = 6, height = 4, dpi = 150)
 
 # Exportar escores finais para uso no R Markdown
 saida <- dados_respostas_filtrados %>%
