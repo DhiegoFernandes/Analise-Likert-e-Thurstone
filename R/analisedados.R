@@ -148,25 +148,31 @@ dir.create("plots", showWarnings = FALSE)
 g_hist_likert <- ggplot(dados_respostas_filtrados, aes(x = escore_likert)) +
   geom_histogram(bins = 10, fill = "skyblue", color = "black", alpha = 0.8) +
   labs(title = "Distribuição de Escores - Likert", x = "Escore total", y = "Frequência") +
-  theme_minimal()
+  theme_minimal() +
+  scale_x_continuous(breaks = seq(0, 25, by = 1)) +
+  scale_y_continuous(breaks = seq(0, 15, by = 1))
 
 # Boxplot likert exibe mediana, valores extremos (max 25 (pratica), min 5(teoria))
 g_box_likert <- ggplot(dados_respostas_filtrados, aes(y = escore_likert)) +
   geom_boxplot(fill = "skyblue") +
   labs(title = "Boxplot - Likert", y = "Escore total") +
-  theme_minimal()
+  theme_minimal() +
+  scale_y_continuous(breaks = seq(10, 25, by = 2))
 
 # Distribuicao thurstone 
 g_hist_thurst <- ggplot(dados_respostas_filtrados, aes(x = escore_thurstone)) +
   geom_histogram(bins = 10, fill = "lightgreen", color = "black", alpha = 0.8) +
   labs(title = "Distribuição de Escores - Thurstone", x = "Escore", y = "Frequência") +
-  theme_minimal()
+  theme_minimal() +
+  scale_x_continuous(breaks = seq(2, 10, by = 1)) +
+  scale_y_continuous(breaks = seq(0, 15, by = 1))
 
 # Boxplot Thurstone (max 10 (teoria), min 2(pratica))
 g_box_thurst <- ggplot(dados_respostas_filtrados, aes(y = escore_thurstone)) +
   geom_boxplot(fill = "lightgreen") +
   labs(title = "Boxplot - Thurstone", y = "Escore") +
-  theme_minimal()
+  theme_minimal() +
+  scale_y_continuous(breaks = seq(2, 10, by = 1))
 
 
 # Comparação e correlação
@@ -179,15 +185,17 @@ g_box_comp <- ggplot(dados_comp, aes(x = Escala, y = Escore, fill = Escala)) +
   geom_boxplot() +
   scale_fill_manual(values = c("escore_likert" = "skyblue", "escore_thurstone" = "lightgreen")) +
   labs(title = "Comparação de Escores", x = "", y = "Escore") +
-  theme_minimal()
-
+  theme_minimal() +
+  scale_y_continuous(breaks = seq(0, 25, by = 5))
+  
 # Histogramas entre Escores para comparar distribuições
 g_hist_facet <- ggplot(dados_comp, aes(x = Escore, fill = Escala)) +
   geom_histogram(bins = 10, color = "black", alpha = 0.6) +
   facet_wrap(~Escala, scales = "free") +
   scale_fill_manual(values = c("escore_likert" = "skyblue", "escore_thurstone" = "lightgreen")) +
   labs(title = "Distribuição de Escores", x = "Escore", y = "Frequência") +
-  theme_minimal()
+  theme_minimal() +
+  scale_y_continuous(breaks = seq(0, 15, by = 2))
 
 
 # Salva gráficos

@@ -69,6 +69,7 @@ As análises estatísticas incluíram medidas de média, mediana, dispersão, co
 
 #### Escala Likert
 Pontuação de 1 a 5 por item, (As perguntas 4 e 5 foram invertidos como citadas anteriormente para consistência).  
+
 - **Menor escore (5):** indica valorização da teoria.  
 - **Maior escore (25):** indica valorização da prática.
 
@@ -115,7 +116,7 @@ Os gráficos a seguir ilustram a distribuição dos escores obtidos em cada esca
 knitr::include_graphics(here("plots", "distribuicao_likert.png"))
 ```
 
-Observa-se que ___ (descrever padrão visual, como concentração em valores altos/baixos) ASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADAS.
+No gráfico de histograma da escala likert, o eixo horizontal representa o escore total, que varia de 5 a 25, as pontuações mais altas próximas a 25 indicam uma maior **valorização do conhecimento prático**, enquanto pontuações mais baixas (próximas de 5) indicam uma maior valorização do conhecimento teórico. Pode se ter o entendimento que a concentração maior se está entre 15 e 24, e há uma **assimetria negativa**. Esses resultados sugerem que os alunos tem opiniões amplamente alinhadas, reforçando a ideia de que o conhecimento prático é considerado mais relevante que a teoria na formação no ensino superior
 
 
 
@@ -124,10 +125,7 @@ Observa-se que ___ (descrever padrão visual, como concentração em valores alt
 knitr::include_graphics("plots/distribuicao_thurstone.png")
 ```
 
-Nota-se que ___ ASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADAS.
-
-
-
+O histograma da Distribuição de Escores da escala Thurstone revela que a maoria dos participantes tende a **valorizar o conhecimento prático**, visto que valores baixos indicam maior valorização da prática e valores altos indicam maior valorização da teoria, a pontuação dos participantes varia de 2 a 10 no eixo horizontal, e é possível ver uma barra isolada em 10, onde que mostra que pelo menos um participante concordou com mais com a teoria, a distribuição é assimétrica a direita. A distribuição tem uma **assimetria positiva**, com uma dispersão ampla, demonstrando maior variabilidade que a escala Likert.
 
 
 ### Boxplots
@@ -137,14 +135,32 @@ Os boxplots a seguir evidenciam a dispersão dos dados em cada escala.
 ```{r boxplot-likert, echo=FALSE, fig.cap="Figura 3 – Boxplot da Escala de Likert."}
 knitr::include_graphics("plots/box_likert.png")
 ```
-Verifica-se que ___ ASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD
+
+Verifica-se no gráfico bloxplot da escala de likert uma forte **valorização do conhecimento prático**, o gráfico mostra que a maioria dos alunos tem opinião alinhada, com mediana próxima de 19 e cerca de metade das respostas estão concentradas entre 17 e 20, mostrando baixa dispersão e grande consenso entre os participantes. Os bigodes variam de cerca de 12 a 24 mostrando a dispersão das opiniões, enquanto um outlier próximo de 10 revela a presença de um participante que valoriza mais o conhecimento teórico.
 
 ```{r boxplot-thurstone, echo=FALSE, fig.cap="Figura 4 – Boxplot da Escala de Thurstone."}
 knitr::include_graphics("plots/box_thurstone.png")
 ```
-Verifica-se que ___ ASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD
+
+Verifica-se no boxplot da escala de Thurstone que os **alunos preferem a prática**, visto que nessa escala os valores mais baixos representam a valorização da prática, a mediana se encontra em aproximadamente 3.75. A caixa, que representa 50% das respostas, se estende de cerca de 2.75 a 4.75, a distribuição mostra uma variabilidade maior do que a da Escala de Likert, o que pode ser evidenciado pela presença de dois outliers em 8 e 10, de alunos com pensamentos diferentes da maioria, que preferem a teoria.
 
 ## **DISCUSSÃO E ANÁLISE COMPARATIVA**
+
+
+### Relação entre os escores
+
+Aqui vamos investigar a relação entre os escores obtidos nas escalas de Likert e de Thurstone para a atitude dos estudantes sobre a importância do conhecimento prático versus teórico. Embora as duas escalas utilizem procedimentos de construção distintos, ambas medem o mesmo conceito e, portanto, espera-se consistência nos resultados. É importante observar o sentido das pontuações: na escala de Likert, valores mais altos indicam maior valorização da prática, enquanto na escala de Thurstone valores mais baixos representam essa mesma preferência. A Figura 6 apresenta os histogramas lado a lado, permitindo a comparação visual de posição, dispersão e possíveis outliers, que discutimos a seguir.
+
+```{r boxplot-correlacao, echo=FALSE, fig.cap="Figura 6 – Histograma de distribuição de Escores Likert vs. Thurstone."}
+knitr::include_graphics("plots/histogramas_facetados.png")
+```
+
+Ao observar os histogramas das duas escalas, Likert e Thurstone, lado a lado, é possível notar semelhanças e diferenças importantes:
+
+  * **Resultados Similares**: Ambas as escalas, apesar de suas metodologias distintas, produziram resultados finais semelhantes. Em ambos os casos, a maior concentração de escores se localiza na faixa que indica a **valorização do conhecimento prático**. Isso sugere que as duas escalas foram eficazes em capturar a mesma tendência geral do público.
+  * **Distribuições**: O histograma de Likert mostra uma distribuição mais concentrada e simétrica, com a maioria das respostas agrupadas. Já o histograma de Thurstone tem dois picos principais, que apresenta uma distribuição assimétrica positiva, que se estende para valores mais altos referentes a teoria.
+  *	**Dispersão**: A distribuição de Likert é a menos dispersa, o que indica uma opinião mais consistente nessa escala. A distribuição de Thurstone, por sua vez é mais variável, com escores mais espalhados, mostrando uma diversidade maior de opiniões.
+
 
 ### Comparação entre escalas
 
@@ -154,23 +170,42 @@ A Figura 5 apresenta um boxplot comparativo dos escores obtidos nas duas escalas
 knitr::include_graphics("plots/box_comparativo.png")
 ```
 
-Verifica-se que ___ ASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADAS.
 
+Em relação a comparações dos escores entre as escalas, verifica-se que, na escala de Likert, a mediana está próxima de **19**, com 50% dos escores concentrados entre cerca de 17 e 20; os bigodes vão aproximadamente de 12 a 24 e há um outlier por volta de 10, indicando baixa dispersão e **alto consenso**.
 
+Na escala de Thurstone, a mediana fica em torno de **3,7**; a caixa vai de cerca de 2,7 a 4,7; os bigodes se estendem aproximadamente de 2 a 6/7 e há dois outliers em 8 e 10, evidenciando maior variabilidade.
 
-### Relação entre os escores
+Considerando o sentido das escalas (Likert: valores altos = prática; Thurstone: valores baixos = prática), ambos os boxplots apontam para preferência pela prática, embora a Thurstone apresente maior dispersão dos escores.
 
-A relação entre os escores das escalas foi avaliada por meio de gráfico de distribuição de escores (Figura 6), que indica __ ASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADAS..
+### **Interpretação dos Métodos e Limitações**
 
-```{r boxplot-correlacao, echo=FALSE, fig.cap="Figura 6 – Histograma de distribuição de Escores Likert vs. Thurstone."}
-knitr::include_graphics("plots/histogramas_facetados.png")
-```
+#### **Limitações**
 
-ASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADAS..
+Em geral as análises e resultados da escala Likert foram mais fáceis de produzir e analisar em relação a escala Thurstone, pois ela não exige um painel de juízes para ponderar os itens. A analise foi mais simples pois os alunos que responderam a pesquisa expressaram o seu próprio grau de concordância ou discordância em cada item.
+
+A escala Thurstone, foi **mais complexa** de construir, pois o peso das perguntas deveriam ser indicados por um grupo de juízes para cada pergunta com base na média de cada valor dado pelos juízes. Embora, para o respondente, a resposta é mais fácil, pois ele escolhe apenas entre  discordo, ou concordo.
+
+#### **Qual escala capturou melhor a atitude?**
+
+Em relação a medição da atitude, a **Escala de Thurstone** pode ter sido a mais precisa, devido a natureza da escala que é a média dos pesos com o qual o participante concordou. Enquanto a escala Likert trata de todas as intensidades (Concordancia de 1 a 5), a escala Thurstone se diferencia pelo peso e importância de cada afirmação, demonstrando que algumas respostas podem ter maior peso que outras. Além disso, a maior dispersão da que foi encontrada nas análises da escala Thurstone pode ser um indicativo de que ela capturou melhor a variedade de nuances do que a Likert.
+
+#### **Limitações de Estudo**
+
+* **Tempo e financeiro**: O curto tempo para a realização da pesquisa, criação de análises e pouco compartilhamento devido a falta de promoção geram limitação a quantidade de análises e resultados finais.
+* **Tamanho da amostra**: A amostra de 46 participantes é pequena e pode não ser suficiente para tirar conclusões definitivas sobre o tema
+* **Amostra não-probabilística**: A amostragem por conveniência limita a confiança dos resultados. As opiniões dos estudantes que responderam a pesquisa podem não ser representativas de todos os estudantes no ensino superior, .
+* **Viés de resposta**: A natureza online do questionário e o fato de ser voluntário pode ter atraído participantes com opiniões mais fortes sobre o tema, gerando um viés de resposta, além de não ter sido coletados dados de outras formas, como presencial.
+* **Validade das escalas**: A construção da escala de Thurstone foi feita pelos próprios autores, e não por um painel de juízes especialistas, o que pode comprometer a validade e a confiabilidade dos pesos atribuídos.
+
 
 ## **CONCLUSÃO**
 
-ASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADAS
+Este estudo comparou duas abordagens de mensuração, Likert e Thurstone, para avaliar a valorização do conhecimento prático em relação ao teórico entre estudantes do ensino superior. Os resultados seguem alinhados para a mesma conclusão final, onde há uma clara **preferência pela prática**. Na escala de Likert, os escores se concentram em níveis altos (mediana próxima de 19 e baixa dispersão), indicando forte consenso. Na escala de Thurstone, a mediana baixa (≈ 3,7) aponta para o mesmo padrão, porém com uma maior variabilidade e presença de mais outliers, revelando resultados que tende a valorizar mais a teoria. Os histogramas e boxplots criados evidenciam validade similar entre as medidas, mesmo que sejam escalas com métodos e sensibilidades diferentes, em que a Likert exibe o consenso geral dos estudantes, enquanto a escala Thurstone destaca melhor as respostas controversas. 
+
+Do ponto de vista prático, os resultados da pesquisa sugerem que a prática é mais valorizada pelos alunos, mas **não substitui a teoria**, de acordo com outliers. A prática deve ser priorizada em relação a teoria, como atividades de resolução de problemas reais, projetos aplicados e metodologias ativas. Para monitoramento contínuo, a escala de Likert pode ser útil pela simplicidade e fácil manipulação dos resultados, e para diagnósticos mais finos de opiniões, a escala de Thurstone se mostra mais eficaz. 
+
+Em suma, os resultados reforçam a centralidade do conhecimento prático na formação em nível superior e indicam que as escalas de Likert e Thurstone são instrumentos válidos que podem ser complementares em análises, **a combinação dessas escalas em processos de questionários podem melhorar a precisão dos resultados**, garantindo melhor coesão e afirmações estatísticas em contextos reais. 
+
 
 ## **ANEXO**
 
