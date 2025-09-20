@@ -181,13 +181,8 @@ g_box_comp <- ggplot(dados_comp, aes(x = Escala, y = Escore, fill = Escala)) +
   labs(title = "Comparação de Escores", x = "", y = "Escore") +
   theme_minimal()
 
-# Pivot para formato longo usando os escores originais
-dados_comp_orig <- dados_respostas_filtrados %>%
-  select(escore_likert, escore_thurstone) %>%
-  pivot_longer(cols = everything(), names_to = "Escala", values_to = "Escore")
-
-# Histogramas facetados para comparar distribuições originais
-g_hist_facet <- ggplot(dados_comp_orig, aes(x = Escore, fill = Escala)) +
+# Histogramas entre Escores para comparar distribuições
+g_hist_facet <- ggplot(dados_comp, aes(x = Escore, fill = Escala)) +
   geom_histogram(bins = 10, color = "black", alpha = 0.6) +
   facet_wrap(~Escala, scales = "free") +
   scale_fill_manual(values = c("escore_likert" = "skyblue", "escore_thurstone" = "lightgreen")) +

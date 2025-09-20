@@ -157,13 +157,13 @@ Verifica-se que ___ ASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SA
 
 ### Relação entre os escores
 
-A relação entre os escores das escalas foi avaliada por meio de gráfico de dispersão (Figura 6), que indica a força da associação entre as duas medidas.
+A relação entre os escores das escalas foi avaliada por meio de gráfico de distribuição de escores (Figura 6), que indica __ ASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADAS..
 
-```{r boxplot-correlacao, echo=FALSE, fig.cap="Figura 6 – Dispersão dos escores Likert vs. Thurstone."}
-knitr::include_graphics("plots/scatter_correlacao.png")
+```{r boxplot-correlacao, echo=FALSE, fig.cap="Figura 6 – Histograma de distribuição de Escores Likert vs. Thurstone."}
+knitr::include_graphics("plots/histogramas_facetados.png")
 ```
 
-O coeficiente de correlação obtido foi de r = ___, sugerindo ___ (ex.: correlação positiva fraca/moderada/forte).
+ASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADAS..
 
 ## **DISCUSSÃO E ANÁLISE COMPARATIVA**
 
