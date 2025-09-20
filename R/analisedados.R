@@ -1,3 +1,4 @@
+# Pacotes necessarios
 req <- c("here","readr","dplyr","ggplot2","tidyr","psych","gridExtra","stringr")
 inst <- req[!req %in% installed.packages()[,1]]
 if(length(inst)) install.packages(inst)
