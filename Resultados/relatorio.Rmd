@@ -136,13 +136,13 @@ Os boxplots a seguir evidenciam a dispersão dos dados em cada escala.
 knitr::include_graphics("plots/box_likert.png")
 ```
 
-Verifica-se no gráfico bloxplot da escala de likert uma forte **valorização do conhecimento prático**, o gráfico mostra que a maioria dos alunos tem opinião alinhada, com mediana próxima de 19 e cerca de metade das respostas estão concentradas entre 17 e 20, mostrando baixa dispersão e grande consenso entre os participantes. Os bigodes variam de cerca de 12 a 24 mostrando a dispersão das opiniões, enquanto um outlier próximo de 10 revela a presença de um participante que valoriza mais o conhecimento teórico.
+Verifica-se no gráfico bloxplot da escala de likert uma forte **valorização do conhecimento prático**, o gráfico mostra que a maioria dos alunos tem opinião alinhada, com mediana próxima de **19** e cerca de metade das respostas estão concentradas entre 17 e 20, mostrando baixa dispersão e grande consenso entre os participantes. Os bigodes variam de cerca de 12 a 24 mostrando a dispersão das opiniões, enquanto um outlier próximo de 10 revela a presença de um participante que valoriza mais o conhecimento teórico.
 
 ```{r boxplot-thurstone, echo=FALSE, fig.cap="Figura 4 – Boxplot da Escala de Thurstone."}
 knitr::include_graphics("plots/box_thurstone.png")
 ```
 
-Verifica-se no boxplot da escala de Thurstone que os **alunos preferem a prática**, visto que nessa escala os valores mais baixos representam a valorização da prática, a mediana se encontra em aproximadamente 3.75. A caixa, que representa 50% das respostas, se estende de cerca de 2.75 a 4.75, a distribuição mostra uma variabilidade maior do que a da Escala de Likert, o que pode ser evidenciado pela presença de dois outliers em 8 e 10, de alunos com pensamentos diferentes da maioria, que preferem a teoria.
+Verifica-se no boxplot da escala de Thurstone que os **alunos preferem a prática**, visto que nessa escala os valores mais baixos representam a valorização da prática, a mediana se encontra em aproximadamente **3.75**. A caixa, que representa 50% das respostas, se estende de cerca de 2.75 a 4.75, a distribuição mostra uma variabilidade maior do que a da Escala de Likert, o que pode ser evidenciado pela presença de dois **outliers** em 8 e 10, de alunos com pensamentos diferentes da maioria, que preferem a teoria.
 
 ## **DISCUSSÃO E ANÁLISE COMPARATIVA**
 
@@ -202,7 +202,7 @@ Em relação a medição da atitude, a **Escala de Thurstone** pode ter sido a m
 
 Este estudo comparou duas abordagens de mensuração, Likert e Thurstone, para avaliar a valorização do conhecimento prático em relação ao teórico entre estudantes do ensino superior. Os resultados seguem alinhados para a mesma conclusão final, onde há uma clara **preferência pela prática**. Na escala de Likert, os escores se concentram em níveis altos (mediana próxima de 19 e baixa dispersão), indicando forte consenso. Na escala de Thurstone, a mediana baixa (≈ 3,7) aponta para o mesmo padrão, porém com uma maior variabilidade e presença de mais outliers, revelando resultados que tende a valorizar mais a teoria. Os histogramas e boxplots criados evidenciam validade similar entre as medidas, mesmo que sejam escalas com métodos e sensibilidades diferentes, em que a Likert exibe o consenso geral dos estudantes, enquanto a escala Thurstone destaca melhor as respostas controversas. 
 
-Do ponto de vista prático, os resultados da pesquisa sugerem que a prática é mais valorizada pelos alunos, mas **não substitui a teoria**, de acordo com outliers. A prática deve ser priorizada em relação a teoria, como atividades de resolução de problemas reais, projetos aplicados e metodologias ativas. Para monitoramento contínuo, a escala de Likert pode ser útil pela simplicidade e fácil manipulação dos resultados, e para diagnósticos mais finos de opiniões, a escala de Thurstone se mostra mais eficaz. 
+Do ponto de vista prático, os resultados da pesquisa sugerem que a prática é mais valorizada pelos alunos, mas **não substitui a teoria**, de acordo com outliers encontrados. A prática deve ser priorizada em relação a teoria, como atividades de resolução de problemas reais, projetos aplicados e metodologias ativas. Para monitoramento contínuo, a escala de Likert pode ser útil pela simplicidade e fácil manipulação dos resultados, e para diagnósticos mais finos de opiniões, a escala de Thurstone se mostra mais eficaz. 
 
 Em suma, os resultados reforçam a centralidade do conhecimento prático na formação em nível superior e indicam que as escalas de Likert e Thurstone são instrumentos válidos que podem ser complementares em análises, **a combinação dessas escalas em processos de questionários podem melhorar a precisão dos resultados**, garantindo melhor coesão e afirmações estatísticas em contextos reais. 
 
@@ -360,26 +360,31 @@ dir.create("plots", showWarnings = FALSE)
 g_hist_likert <- ggplot(dados_respostas_filtrados, aes(x = escore_likert)) +
   geom_histogram(bins = 10, fill = "skyblue", color = "black", alpha = 0.8) +
   labs(title = "Distribuição de Escores - Likert", x = "Escore total", y = "Frequência") +
-  theme_minimal()
+  theme_minimal() +
+  scale_x_continuous(breaks = seq(0, 25, by = 1)) +
+  scale_y_continuous(breaks = seq(0, 15, by = 1))
 
 # Boxplot likert exibe mediana, valores extremos (max 25 (pratica), min 5(teoria))
 g_box_likert <- ggplot(dados_respostas_filtrados, aes(y = escore_likert)) +
   geom_boxplot(fill = "skyblue") +
   labs(title = "Boxplot - Likert", y = "Escore total") +
-  theme_minimal()
+  theme_minimal() +
+  scale_y_continuous(breaks = seq(10, 25, by = 2))
 
 # Distribuicao thurstone 
 g_hist_thurst <- ggplot(dados_respostas_filtrados, aes(x = escore_thurstone)) +
   geom_histogram(bins = 10, fill = "lightgreen", color = "black", alpha = 0.8) +
   labs(title = "Distribuição de Escores - Thurstone", x = "Escore", y = "Frequência") +
-  theme_minimal()
+  theme_minimal() +
+  scale_x_continuous(breaks = seq(2, 10, by = 1)) +
+  scale_y_continuous(breaks = seq(0, 15, by = 1))
 
 # Boxplot Thurstone (max 10 (teoria), min 2(pratica))
 g_box_thurst <- ggplot(dados_respostas_filtrados, aes(y = escore_thurstone)) +
   geom_boxplot(fill = "lightgreen") +
   labs(title = "Boxplot - Thurstone", y = "Escore") +
-  theme_minimal()
-
+  theme_minimal() +
+  scale_y_continuous(breaks = seq(2, 10, by = 1))
 
 
 # Comparação e correlação
@@ -392,21 +397,18 @@ g_box_comp <- ggplot(dados_comp, aes(x = Escala, y = Escore, fill = Escala)) +
   geom_boxplot() +
   scale_fill_manual(values = c("escore_likert" = "skyblue", "escore_thurstone" = "lightgreen")) +
   labs(title = "Comparação de Escores", x = "", y = "Escore") +
-  theme_minimal()
+  theme_minimal() +
+  scale_y_continuous(breaks = seq(0, 25, by = 5))
+  
+# Histogramas entre Escores para comparar distribuições
+g_hist_facet <- ggplot(dados_comp, aes(x = Escore, fill = Escala)) +
+  geom_histogram(bins = 10, color = "black", alpha = 0.6) +
+  facet_wrap(~Escala, scales = "free") +
+  scale_fill_manual(values = c("escore_likert" = "skyblue", "escore_thurstone" = "lightgreen")) +
+  labs(title = "Distribuição de Escores", x = "Escore", y = "Frequência") +
+  theme_minimal() +
+  scale_y_continuous(breaks = seq(0, 15, by = 2))
 
-# correlacao entre likert e thurstone
-cor_escalas <- suppressWarnings(cor(dados_respostas_filtrados$escore_likert,
-                                    dados_respostas_filtrados$escore_thurstone,
-                                    use = "complete.obs"))
-cat("\nCorrelação Likert x Thurstone:", round(cor_escalas, 3), "\n")
-
-# Grafico de dispersao com linha de tendencia
-g_scatter <- ggplot(dados_respostas_filtrados, aes(escore_likert, escore_thurstone)) +
-  geom_point(alpha = 0.7) +
-  geom_smooth(method = "lm", se = TRUE, color = "red") +
-  labs(title = paste0("Correlação Likert x Thurstone (r = ", round(cor_escalas, 3), ")"),
-       x = "Escore Likert", y = "Escore Thurstone") +
-  theme_minimal()
 
 # Salva gráficos
 ggsave("plots/distribuicao_likert.png", g_hist_likert, width = 6, height = 4, dpi = 150)
@@ -414,7 +416,7 @@ ggsave("plots/box_likert.png", g_box_likert, width = 4, height = 4, dpi = 150)
 ggsave("plots/distribuicao_thurstone.png", g_hist_thurst, width = 6, height = 4, dpi = 150)
 ggsave("plots/box_thurstone.png", g_box_thurst, width = 4, height = 4, dpi = 150)
 ggsave("plots/box_comparativo.png", g_box_comp, width = 5, height = 4, dpi = 150)
-ggsave("plots/scatter_correlacao.png", g_scatter, width = 5, height = 4, dpi = 150)
+ggsave("plots/histogramas_facetados.png", g_hist_facet, width = 6, height = 4, dpi = 150)
 
 # Exportar escores finais para uso no R Markdown
 saida <- dados_respostas_filtrados %>%
