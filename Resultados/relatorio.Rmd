@@ -1,5 +1,5 @@
 ---
-title: "Opinião dos estudantes sobre a importância do conhecimento teórico vs conhecimento prático no ensino superior"
+title: "**Análise Comparativa de Escalas de Atitude (Likert vs. Thurstone) com R**: 'Opinião dos estudantes sobre a importância do conhecimento teórico vs conhecimento prático no ensino superior'"
 author: "Dhiego Fernandes da Silva | Moises Alves Silva | Guilherme Cunha Alves"
 output:
   html_document:
