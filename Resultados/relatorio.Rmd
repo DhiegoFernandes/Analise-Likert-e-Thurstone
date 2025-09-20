@@ -33,7 +33,7 @@ O público-alvo da pesquisa compreende estudantes que estão cursando ou já con
 
 ### Tamanho da amostra:
 
-No total, foram obtidos XX respostas. Dentre elas, foram selecionados apenas os participantes com experiência atual ou prévia no ensino superior. Foram excluídos aqueles que trancaram ou abandonaram o curso, bem como os que nunca cursaram o ensino superior. Dessa forma, XX respostas foram utilizadas na análise.
+No total, foram obtidos 48 respostas. Dentre elas, foram selecionados apenas os participantes com experiência atual ou prévia no ensino superior. Foram excluídos aqueles que trancaram ou abandonaram o curso, bem como os que nunca cursaram o ensino superior. Dessa forma, 46 respostas foram utilizadas na análise.
 
 ### Instrumento de coleta de dados
 
@@ -66,16 +66,17 @@ As análises estatísticas incluíram medidas de média, mediana, dispersão, co
 
 ### Interpretação dos escores
 
+#### Escala Likert
+Pontuação de 1 a 5 por item, (As perguntas 4 e 5 foram invertidos como citadas anteriormente para consistência).  
+- **Menor escore (5):** indica valorização da teoria.  
+- **Maior escore (25):** indica valorização da prática.
+
 #### Escala Thurstone
 Cada afirmação da Escala Thurstone possui um peso previamente definido, refletindo a importância relativa de cada item no continuum atitudinal. No nosso estudo, os pesos foram: 2, 2, 4, 10 e 10.
 
 - **Menor escore (2):** concorda apenas com itens de menor peso → forte valorização da prática.  
 - **Maior escore (10):** concorda apenas com itens de maior peso → forte valorização da teoria.  
 
-#### Escala Likert
-Pontuação de 1 a 5 por item, (As perguntas 4 e 5 foram invertidos como citadas anteriormente para consistência).  
-- **Menor escore (5):** indica valorização da teoria.  
-- **Maior escore (25):** indica valorização da prática.
 
 #### Diferenças (Resumo)
 - **Likert:** todos os itens têm mesmo peso, ocorre a soma simples das respostas; 
