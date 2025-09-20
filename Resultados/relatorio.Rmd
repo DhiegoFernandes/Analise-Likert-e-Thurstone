@@ -13,10 +13,11 @@ output:
 lang: pt-BR
 ---
 
-```{r processamento-dados, include=FALSE}
-library(here)
-source(here("R", "analisedados.R"), encoding = "UTF-8")
+```{r setup, include=FALSE}
+# Executa o script que calcula as estatísticas e gera os gráficos
+source(here::here("R", "analisedados.R"))
 ```
+
 ## **INTRODUÇÃO**
 
   O debate sobre o equilíbrio entre conhecimento teórico e conhecimento prático no ensino superior é cada vez mais relevante diante das rápidas mudanças no mercado de trabalho e das exigências por profissionais com capacidades e entendimentos amplos. Enquanto a teoria fornece as bases conceituais necessárias para compreender fenômenos e desenvolver pensamento crítico, a prática oferece a vivência de situações reais, preparando os estudantes para os desafios profissionais imediatos.
