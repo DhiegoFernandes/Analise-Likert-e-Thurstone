@@ -17,7 +17,7 @@ lang: pt-BR
 library(here)
 source(here("R", "analisedados.R"), encoding = "UTF-8")
 ```
-## Introdução
+## **INTRODUÇÃO**
 
   O debate sobre o equilíbrio entre conhecimento teórico e conhecimento prático no ensino superior é cada vez mais relevante diante das rápidas mudanças no mercado de trabalho e das exigências por profissionais com capacidades e entendimentos amplos. Enquanto a teoria fornece as bases conceituais necessárias para compreender fenômenos e desenvolver pensamento crítico, a prática oferece a vivência de situações reais, preparando os estudantes para os desafios profissionais imediatos.
 
@@ -25,17 +25,69 @@ source(here("R", "analisedados.R"), encoding = "UTF-8")
 
   A relevância deste estudo reside em fornecer evidências sobre a percepção dos estudantes, como a importância do conhecimento teórico em relação ao conhecimento prático é percebido por eles na formação universitária, permitindo refletir sobre como universidades podem alinhar seus currículos às demandas, considerando entre fundamentos teóricos e experiências práticas.
 
-## Metodologia
+## **METODOLOGIA**
 
-ASDA DASD SAFAF A
+### Público-alvo e amostragem
 
-## Resultados
+O público-alvo da pesquisa compreende estudantes que estão cursando ou já concluíram uma graduação ou pós-graduação. A amostragem foi não probabilística por conveniência, realizada por meio da divulgação de um formulário online do Google Forms em redes sociais e grupos acadêmicos. A participação foi voluntária, com a possibilidade de responder anonimamente sem a necessidade de informar nome ou gênero.
+
+### Tamanho da amostra:
+
+No total, foram obtidos XX respostas. Dentre elas, foram selecionados apenas os participantes com experiência atual ou prévia no ensino superior. Foram excluídos aqueles que trancaram ou abandonaram o curso, bem como os que nunca cursaram o ensino superior. Dessa forma, XX respostas foram utilizadas na análise.
+
+### Instrumento de coleta de dados
+
+O questionário foi dividido em duas partes:
+
+(1) Dados sociodemográficos: nome (opcional), idade, gênero (opcional) e situação atual em relação ao ensino superior.
+
+(2) Itens de atitude:
+    * Foram elaboradas cinco afirmações, que compõem o mesmo conjunto de itens avaliados nas duas escalas diferentes:
+        (1) A universidade se distancia da realidade do mercado de trabalho ao focar demais em teoria.
+        (2) As disciplinas devem focar mais em projetos práticos do que em aulas teóricas.
+        (3) É responsabilidade da universidade garantir que os alunos saiam preparados para o mercado de trabalho.
+        (4) Uma formação sólida em teoria permite que um profissional se adapte a qualquer desafio futuro.
+        (5) Teorias e conceitos fundamentais são mais importantes do que habilidades práticas.
+        
+    * **Escala de Likert**: Foram criadas cinco afirmações avaliadas em uma escala de 5 pontos (1 = Discordo totalmente a 5 = Concordo totalmente).
+
+    * **Escala de Thurstone**: as mesmas cinco afirmativas foram reapresentadas em formato dicotômico (**Concordo / Discordo**), sendo atribuídos pesos previamente definidos a cada item com base em julgamentos dos autores da pesquisa.
+
+
+
+### Procedimentos de análise
+
+Os dados foram importados e tratados no RStudio, utilizando pacotes como **readr**, **dplyr**, **ggplot2** e **psych**.
+Para a **Escala de Likert**, as respostas foram codificadas numericamente (1 a 5), e para melhor resultado, foram invertidas as questões 4 e 5 que são pró-teoria para que escores mais altos indicassem maior valorização da prática, ou seja, questões que se aliam com a teoria tem a pontuação invertida para que todas as questões sigam uma mesma direção.
+Para a **Escala de Thurstone**, as respostas **Concordo** receberam valor 1 e **Discordo**, 0. Cada item possui um peso previamente estabelecido, e o escore final de cada participante corresponde à média dos pesos das afirmativas com concordância.
+Sendo assim, foi calculado um escore total de ambas escalas para cada participante, esse escore total indica em formato numérico se o participante está mais alinhado com a teoria ou a pratica.
+
+As análises estatísticas incluíram medidas de média, mediana, dispersão, como o desvio padrão e Amplitude Interquartil (IQR) e histogramas e boxplots em relação aos escores das duas escalas.
+
+### Interpretação dos escores
+
+#### Escala Thurstone
+Cada afirmação da Escala Thurstone possui um peso previamente definido, refletindo a importância relativa de cada item no continuum atitudinal. No nosso estudo, os pesos foram: 2, 2, 4, 10 e 10.
+
+- **Menor escore (2):** concorda apenas com itens de menor peso → forte valorização da prática.  
+- **Maior escore (10):** concorda apenas com itens de maior peso → forte valorização da teoria.  
+
+#### Escala Likert
+Pontuação de 1 a 5 por item, (As perguntas 4 e 5 foram invertidos como citadas anteriormente para consistência).  
+- **Menor escore (5):** indica valorização da teoria.  
+- **Maior escore (25):** indica valorização da prática.
+
+#### Diferenças (Resumo)
+- **Likert:** todos os itens têm mesmo peso, ocorre a soma simples das respostas; 
+- **Thurstone:** itens têm pesos diferentes, o escore é a média dos pesos.
+
+## **RESULTADOS**
 
 Esta seção apresenta os resultados obtidos a partir da aplicação das Escalas de Likert e Thurstone, evidenciando a opinião dos participantes sobre a importância do conhecimento teórico versus prático no ensino superior.
 
 ### **Estatísticas descritivas**
 
-A Tabela 1 apresenta as principais medidas de tendência central e dispersão para os escores das duas escalas aplicadas.
+
 
 **Estatísticas principais da escala Likert:**
 ```{r tabela-likert-thurstone, echo=FALSE}
@@ -43,11 +95,15 @@ library(knitr)
 kable(likert_stats, caption = "Tabela 1 – Estatísticas descritivas da Escala de Likert")
 ```
 
+
+
 **Estatísticas principais da escala Thurstone:**
 ```{r tabela-thurstone, echo=FALSE}
 library(knitr)
 kable(thurstone_stats, caption = "Tabela 2 – Estatísticas descritivas da Escala de Thurstone")
 ```
+
+
 
 ### **Distribuição dos escores**
 
@@ -56,54 +112,281 @@ Os gráficos a seguir ilustram a distribuição dos escores obtidos em cada esca
 ```{r grafico-likert, echo=FALSE, fig.cap="Figura 1 – Distribuição dos escores na Escala de Likert."}
 knitr::include_graphics(here("plots", "distribuicao_likert.png"))
 ```
-Figura 1 – Distribuição dos escores na Escala de Likert.
-Observa-se que ___ (descrever padrão visual, como concentração em valores altos/baixos).
 
-[CHUNK R – grafico-thurstone]
+Observa-se que ___ (descrever padrão visual, como concentração em valores altos/baixos) ASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADAS.
 
+
+
+
+```{r grafico-thurstone, echo=FALSE, fig.cap="Figura 2 – Distribuição dos escores na Escala de Thurstone."}
 knitr::include_graphics("plots/distribuicao_thurstone.png")
+```
 
-Figura 2 – Distribuição dos escores na Escala de Thurstone.
-Nota-se que ___.
+Nota-se que ___ ASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADAS.
 
-Boxplots
+
+
+
+
+### Boxplots
 
 Os boxplots a seguir evidenciam a dispersão dos dados em cada escala.
 
-[CHUNK R – box-likert]
-
+```{r boxplot-likert, echo=FALSE, fig.cap="Figura 3 – Boxplot da Escala de Likert."}
 knitr::include_graphics("plots/box_likert.png")
+```
 
-Figura 3 – Boxplot da Escala de Likert.
 
-[CHUNK R – box-thurstone]
-
+```{r boxplot-thurstone, echo=FALSE, fig.cap="Figura 4 – Boxplot da Escala de Thurstone."}
 knitr::include_graphics("plots/box_thurstone.png")
+```
 
-Figura 4 – Boxplot da Escala de Thurstone.
 
-Comparação entre escalas
+### Comparação entre escalas
 
 A Figura 5 apresenta um boxplot comparativo dos escores obtidos nas duas escalas, permitindo visualizar possíveis diferenças de dispersão e mediana.
 
-[CHUNK R – box-comparativo]
-
+```{r boxplot-comparativo, echo=FALSE, fig.cap="Figura 5 – Comparação de escores entre as Escalas de Likert e Thurstone."}
 knitr::include_graphics("plots/box_comparativo.png")
+```
+Verifica-se que ___ ASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADAS.
 
-Figura 5 – Comparação de escores entre as Escalas de Likert e Thurstone.
-Verifica-se que ___.
 
-Relação entre os escores
+
+### Relação entre os escores
 
 A relação entre os escores das escalas foi avaliada por meio de gráfico de dispersão (Figura 6), que indica a força da associação entre as duas medidas.
 
-[CHUNK R – scatter-correlacao]
-
+```{r boxplot-correlacao, echo=FALSE, fig.cap="Figura 6 – Dispersão dos escores Likert vs. Thurstone."}
 knitr::include_graphics("plots/scatter_correlacao.png")
+```
 
-Figura 6 – Dispersão dos escores Likert vs. Thurstone.
 O coeficiente de correlação obtido foi de r = ___, sugerindo ___ (ex.: correlação positiva fraca/moderada/forte).
 
-Interpretação geral
+## **DISCUSSÃO E ANÁLISE COMPARATIVA**
 
-Os resultados indicam que ___ (insira aqui a interpretação principal, como maior valorização da prática, equilíbrio entre teoria e prática, etc.).
+ASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADAS
+
+## **CONCLUSÃO**
+
+## **ANEXO**
+
+```
+# Pacotes necessarios
+req <- c("here","readr","dplyr","ggplot2","tidyr","psych","gridExtra","stringr")
+inst <- req[!req %in% installed.packages()[,1]]
+if(length(inst)) install.packages(inst)
+lapply(req, library, character.only = TRUE)
+
+# Arquivos
+dados_respostas <- read_csv(here("dados", "Opiniao dos estudantes (Responses).csv"))
+dados_pesos <- read_csv(here("dados", "Peso das perguntas pesquisa.csv"))
+
+
+# Exibe respostas obtidas
+table(dados_respostas$`Qual a sua situação atual em relação ao ensino superior?`)
+cat("Dim respostas (Pessoas/questoes):", dim(dados_respostas), "\n")
+
+# Filtrar para manter apenas quem está cursando ou já concluiu
+dados_respostas_filtrados <- dados_respostas %>%
+  filter(`Qual a sua situação atual em relação ao ensino superior?` %in% 
+           c("Estou cursando uma graduação/pós-graduação", 
+             "Já concluí uma graduação/pós-graduação"))
+# Exibe respostas filtradas
+table(dados_respostas_filtrados$`Qual a sua situação atual em relação ao ensino superior?`)
+cat("Respostas após filtro (Pessoas/questoes):", dim(dados_respostas_filtrados), "\n")
+
+
+cat("Colunas respostas:\n"); print(names(dados_respostas_filtrados))
+#cat("Dim pesos:", dim(dados_pesos), "\n")
+#cat("Colunas pesos:\n"); print(names(dados_pesos))
+
+# Seleção das colunas (F:J Likert = 6:10; K:O Thurstone = 11:15)
+stopifnot(ncol(dados_respostas_filtrados) >= 15)
+colunas_likert    <- dados_respostas_filtrados[, 6:10]
+colunas_thurstone <- dados_respostas_filtrados[, 11:15]
+names(colunas_likert)    <- paste0("Likert_", 1:5)
+names(colunas_thurstone) <- paste0("Thurstone_", 1:5)
+
+# Remover linhas totalmente vazias nas áreas F:O (comuns em CSV exportado)
+zona_itens <- dados_respostas_filtrados[, 6:15]
+linhas_validas <- apply(zona_itens, 1, function(r) any(!(is.na(r) | r == "")))
+dados_respostas_filtrados <- dados_respostas_filtrados[linhas_validas, ]
+colunas_likert    <- dados_respostas_filtrados[, 6:10]
+colunas_thurstone <- dados_respostas_filtrados[, 11:15]
+names(colunas_likert)    <- paste0("Likert_", 1:5)
+names(colunas_thurstone) <- paste0("Thurstone_", 1:5)
+
+# Conversão: Likert para numérico (robusto)
+to_num_likert <- function(x) {
+  x_chr <- trimws(tolower(as.character(x)))
+  # tenta conversão direta (ex.: "1","2")
+  out <- suppressWarnings(as.numeric(x_chr))
+  # se maioria virou NA, mapear textos
+  if(mean(is.na(out)) > 0.5) {
+    out <- dplyr::case_when(
+      x_chr %in% c("1","discordo totalmente") ~ 1,
+      x_chr %in% c("2","discordo parcialmente") ~ 2,
+      x_chr %in% c("3","não concordo nem discordo") ~ 3,
+      x_chr %in% c("4","concordo parcialmente") ~ 4,
+      x_chr %in% c("5","concordo totalmente") ~ 5,
+      str_detect(x_chr, "^1") ~ 1,
+      str_detect(x_chr, "^2") ~ 2,
+      str_detect(x_chr, "^3") ~ 3,
+      str_detect(x_chr, "^4") ~ 4,
+      str_detect(x_chr, "^5") ~ 5,
+      TRUE ~ NA_real_
+    )
+  }
+  out
+}
+colunas_likert_num <- as.data.frame(lapply(colunas_likert, to_num_likert))
+names(colunas_likert_num) <- names(colunas_likert)
+
+# Invertendo os itens 4 e 5 para valorização da prática (Perguntas pró-teoria para seguir mesma direção)
+itens_invertidos <- c("Likert_4", "Likert_5") 
+if(length(itens_invertidos)) {
+  colunas_likert_num[itens_invertidos] <- lapply(colunas_likert_num[itens_invertidos], function(x) 6 - x)
+}
+
+# Escore Likert
+dados_respostas_filtrados$escore_likert <- rowSums(colunas_likert_num, na.rm = TRUE)
+
+# itens_com_var <- colunas_likert_num[, sapply(colunas_likert_num, function(v) var(v, na.rm = TRUE) > 0), drop = FALSE]
+# if(ncol(itens_com_var) >= 2) {
+#   alpha_likert <- psych::alpha(itens_com_var, warnings = FALSE)
+#   cat("Alfa de Cronbach (Likert):", round(alpha_likert$total$raw_alpha, 3), "\n")
+# } else {
+#   alpha_likert <- NULL
+#   cat("Sem variabilidade suficiente nos itens Likert para calcular alfa.\n")
+# }
+
+# Estatísticas Likert
+likert_stats <- data.frame(
+  Estatistica = c("Média","Mediana","Desvio Padrão","IQR","Min","Max"),
+  Valor = c(
+    mean(dados_respostas_filtrados$escore_likert, na.rm = TRUE),
+    median(dados_respostas_filtrados$escore_likert, na.rm = TRUE),
+    sd(dados_respostas_filtrados$escore_likert, na.rm = TRUE),
+    IQR(dados_respostas_filtrados$escore_likert, na.rm = TRUE),
+    min(dados_respostas_filtrados$escore_likert, na.rm = TRUE),
+    max(dados_respostas_filtrados$escore_likert, na.rm = TRUE)
+  )
+)
+
+# -------------------------------------------------------------------------------------------------
+# 8) Thurstone: binariza pesos (0 discordo e 1 concordo)
+to_bin_thurstone <- function(x){
+  x_chr <- trimws(tolower(as.character(x)))
+  dplyr::case_when(
+    x_chr == "concordo"  ~ 1,
+    x_chr == "discordo" ~ 0,
+    TRUE ~ NA_real_
+  )
+}
+colunas_thurstone_bin <- as.data.frame(lapply(colunas_thurstone, to_bin_thurstone))
+names(colunas_thurstone_bin) <- names(colunas_thurstone)
+
+# Acessa os pesos e converte para numero
+pesos_thurstone <- as.numeric(dados_pesos$`Mediana (peso final)`)
+pesos_thurstone <- pesos_thurstone[1:5] 
+
+# escore Thurstone = média dos pesos das afirmativas com concordo (1)
+mat_bin <- as.matrix(colunas_thurstone_bin)
+soma_pesos <- mat_bin %*% matrix(pesos_thurstone, ncol = 1)
+qtd_conc   <- rowSums(colunas_thurstone_bin, na.rm = TRUE)
+
+# Calcula escore thurstone e coloca na tabela respostasfiltradas (11-Valoriza teoria e 1-Valoriza pratica)
+dados_respostas_filtrados$escore_thurstone <- ifelse(qtd_conc > 0, soma_pesos[,1] / qtd_conc, NA_real_)
+
+# Estatísticas Thurstone
+thurstone_stats <- data.frame(
+  Estatistica = c("Média","Mediana","Desvio Padrão","IQR","Min","Max"),
+  Valor = c(
+    mean(dados_respostas_filtrados$escore_thurstone, na.rm = TRUE),
+    median(dados_respostas_filtrados$escore_thurstone, na.rm = TRUE),
+    sd(dados_respostas_filtrados$escore_thurstone, na.rm = TRUE),
+    IQR(dados_respostas_filtrados$escore_thurstone, na.rm = TRUE),
+    min(dados_respostas_filtrados$escore_thurstone, na.rm = TRUE),
+    max(dados_respostas_filtrados$escore_thurstone, na.rm = TRUE)
+  )
+)
+
+cat("\nResumo Likert:\n"); print(likert_stats)
+cat("\nResumo Thurstone:\n"); print(thurstone_stats)
+
+# Gráficos
+dir.create("plots", showWarnings = FALSE)
+
+# Distribuicao likert
+g_hist_likert <- ggplot(dados_respostas_filtrados, aes(x = escore_likert)) +
+  geom_histogram(bins = 10, fill = "skyblue", color = "black", alpha = 0.8) +
+  labs(title = "Distribuição de Escores - Likert", x = "Escore total", y = "Frequência") +
+  theme_minimal()
+
+# Boxplot likert exibe mediana, valores extremos (max 25 (pratica), min 5(teoria))
+g_box_likert <- ggplot(dados_respostas_filtrados, aes(y = escore_likert)) +
+  geom_boxplot(fill = "skyblue") +
+  labs(title = "Boxplot - Likert", y = "Escore total") +
+  theme_minimal()
+
+# Distribuicao thurstone 
+g_hist_thurst <- ggplot(dados_respostas_filtrados, aes(x = escore_thurstone)) +
+  geom_histogram(bins = 10, fill = "lightgreen", color = "black", alpha = 0.8) +
+  labs(title = "Distribuição de Escores - Thurstone", x = "Escore", y = "Frequência") +
+  theme_minimal()
+
+# Boxplot Thurstone (max 10 (teoria), min 2(pratica))
+g_box_thurst <- ggplot(dados_respostas_filtrados, aes(y = escore_thurstone)) +
+  geom_boxplot(fill = "lightgreen") +
+  labs(title = "Boxplot - Thurstone", y = "Escore") +
+  theme_minimal()
+
+
+
+# Comparação e correlação
+dados_comp <- dados_respostas_filtrados %>%
+  select(escore_likert, escore_thurstone) %>%
+  pivot_longer(cols = everything(), names_to = "Escala", values_to = "Escore")
+
+# Boxplot comparativo entre likert e thurstone
+g_box_comp <- ggplot(dados_comp, aes(x = Escala, y = Escore, fill = Escala)) +
+  geom_boxplot() +
+  scale_fill_manual(values = c("escore_likert" = "skyblue", "escore_thurstone" = "lightgreen")) +
+  labs(title = "Comparação de Escores", x = "", y = "Escore") +
+  theme_minimal()
+
+# correlacao entre likert e thurstone
+cor_escalas <- suppressWarnings(cor(dados_respostas_filtrados$escore_likert,
+                                    dados_respostas_filtrados$escore_thurstone,
+                                    use = "complete.obs"))
+cat("\nCorrelação Likert x Thurstone:", round(cor_escalas, 3), "\n")
+
+# Grafico de dispersao com linha de tendencia
+g_scatter <- ggplot(dados_respostas_filtrados, aes(escore_likert, escore_thurstone)) +
+  geom_point(alpha = 0.7) +
+  geom_smooth(method = "lm", se = TRUE, color = "red") +
+  labs(title = paste0("Correlação Likert x Thurstone (r = ", round(cor_escalas, 3), ")"),
+       x = "Escore Likert", y = "Escore Thurstone") +
+  theme_minimal()
+
+# Salva gráficos
+ggsave("plots/distribuicao_likert.png", g_hist_likert, width = 6, height = 4, dpi = 150)
+ggsave("plots/box_likert.png", g_box_likert, width = 4, height = 4, dpi = 150)
+ggsave("plots/distribuicao_thurstone.png", g_hist_thurst, width = 6, height = 4, dpi = 150)
+ggsave("plots/box_thurstone.png", g_box_thurst, width = 4, height = 4, dpi = 150)
+ggsave("plots/box_comparativo.png", g_box_comp, width = 5, height = 4, dpi = 150)
+ggsave("plots/scatter_correlacao.png", g_scatter, width = 5, height = 4, dpi = 150)
+
+# Exportar escores finais para uso no R Markdown
+saida <- dados_respostas_filtrados %>%
+  mutate(across(everything(), as.character)) %>%
+  bind_cols(
+    colunas_likert_num %>% mutate(across(everything(), as.character)),
+    colunas_thurstone %>% mutate(across(everything(), as.character))
+  ) %>%
+  select(escore_likert, escore_thurstone, everything())
+
+write_csv(saida, "escores_finais.csv")
+cat("\nArquivo 'escores_finais.csv' salvo e gráficos na pasta 'plots/'.\n")
+```
