@@ -33,7 +33,7 @@ O público-alvo da pesquisa compreende estudantes que estão cursando ou já con
 
 ### Tamanho da amostra:
 
-No total, foram obtidos 48 respostas. Dentre elas, foram selecionados apenas os participantes com experiência atual ou prévia no ensino superior. Foram excluídos aqueles que trancaram ou abandonaram o curso, bem como os que nunca cursaram o ensino superior. Dessa forma, 46 respostas foram utilizadas na análise.
+No total, foram obtidos **48** respostas. Dentre elas, foram selecionados apenas os participantes com experiência atual ou prévia no ensino superior. Foram excluídos aqueles que trancaram ou abandonaram o curso, bem como os que nunca cursaram o ensino superior. Dessa forma, **46** respostas foram utilizadas na análise.
 
 ### Instrumento de coleta de dados
 
@@ -136,12 +136,14 @@ Os boxplots a seguir evidenciam a dispersão dos dados em cada escala.
 ```{r boxplot-likert, echo=FALSE, fig.cap="Figura 3 – Boxplot da Escala de Likert."}
 knitr::include_graphics("plots/box_likert.png")
 ```
-
+Verifica-se que ___ ASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD
 
 ```{r boxplot-thurstone, echo=FALSE, fig.cap="Figura 4 – Boxplot da Escala de Thurstone."}
 knitr::include_graphics("plots/box_thurstone.png")
 ```
+Verifica-se que ___ ASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD
 
+## **DISCUSSÃO E ANÁLISE COMPARATIVA**
 
 ### Comparação entre escalas
 
@@ -164,10 +166,6 @@ knitr::include_graphics("plots/histogramas_facetados.png")
 ```
 
 ASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADAS..
-
-## **DISCUSSÃO E ANÁLISE COMPARATIVA**
-
-ASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADASASDAD SASADAS
 
 ## **CONCLUSÃO**
 
