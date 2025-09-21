@@ -24,7 +24,7 @@ source(here::here("R", "analisedados.R"))
 
   Neste contexto, essa pesquisa procura compreender a **“Opinião dos estudantes sobre a importância do conhecimento teórico vs. conhecimento prático no ensino superior”** e a relação entre esses dois tipos de conhecimento em sua formação acadêmica. Fazendo assim comparações com as metodologias de mensuração de atitudes, **Escala de Likert e a Escala de Thurstone**.
 
-  A relevância deste estudo reside em fornecer evidências sobre a percepção dos estudantes, como a importância do conhecimento teórico em relação ao conhecimento prático é percebido por eles na formação universitária, permitindo refletir sobre como universidades podem alinhar seus currículos às demandas, considerando entre fundamentos teóricos e experiências práticas.
+  A relevância deste estudo reside em fornecer evidências sobre a percepção dos estudantes, como a importância do conhecimento teórico em relação ao conhecimento prático é percebido por eles na formação universitária, permitindo refletir sobre como universidades podem alinhar seus currículos às demandas, equilibrando fundamentos teóricos e experiências práticas.
 
 ## **METODOLOGIA**
 
